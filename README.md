@@ -42,7 +42,8 @@ El sistema debe ser capaz de listar todos los productos comprados. Estos son los
 
 - **Ejemplo de la respuesta**:  
     Este es un ejemplo ilustrativo de cómo debe ser la respuesta del programa para este apartado:
-
+    
+```json
    {
   "results": [
     {
@@ -72,4 +73,4 @@ El sistema debe ser capaz de listar todos los productos comprados. Estos son los
     "Luis": 1200
   }
 }
-    
+```

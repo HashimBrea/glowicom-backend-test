@@ -10,7 +10,7 @@ SET NAMES utf8mb4;
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(65) NOT NULL AUTO_INCREMENT,
-  `userId` varchar(255) NOT NULL,
+  `userName` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
   `priceCategory` varchar(255) NOT NULL,
@@ -18,4 +18,4 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- 2024-12-06 02:22:08
+-- 2024-12-06 20:06:13
