@@ -1,4 +1,4 @@
-# Prueba Técnica: Sistema Backend para Tienda en Línea
+# Prueba Técnica Backend GLOWICOM
 
 La prueba técnica consiste en desarrollar un sistema backend para una tienda en línea que permita a los usuarios comprar productos. Este sistema debe manejar dos funcionalidades principales.
 
@@ -8,19 +8,22 @@ La prueba técnica consiste en desarrollar un sistema backend para una tienda en
 
 Cuando un usuario compra un producto, el sistema debe guardar información sobre la compra, incluyendo:
 
-- `userId`: ID del usuario que realiza la compra.
+- `userName`: Nombre del usuario que realiza la compra.
 - `name`: Nombre del producto.
 - `price`: Precio del producto.
 - `priceCategory`: Categoría del precio basada en rangos predefinidos:
     - `"Cheap"` para precios entre 1 y 500.
     - `"Moderate"` para precios de más de 500 y menos de 1000.
     - `"Expensive"` para precios de 1000 y superior.
+      
+Para precios menor a 1 deberás devolver un error indicando que es un precio inválido.
 
-Se deberá agregar al menos:
-- **2 compras con el mismo usuario**.
-- **1 compra con otro usuario distinto**.
+Se deberá agregar:
 
-Cada una de las compras debe caer en una categoría de precio distinta.
+- **2 compras con el mismo usuario, es decir, realizar 2 compras con un usuario con el mismo nombre**.
+- **1 compra con otro usuario distinto, es decir, realizar una comprar con un usuario con otro nombre**.
+
+Las 3 compras deben caer en una categoría de precio distinta, o lo que es decir: una compra en `"Cheap"`, otra en `"Moderate"` y la tercera en `"Expensive"`.
 
 ### 2. Listado de Productos Comprados
 
@@ -35,4 +38,38 @@ El sistema debe ser capaz de listar todos los productos comprados. Estos son los
     - Si no se envía ningún valor, se deben listar todos los productos.
 
 - **Calcular y Mostrar el Total Gastado por Cada Usuario**:  
-    Este cálculo debe incluir todos los productos comprados por cada usuario, sumando los precios de cada producto. Se adjuntará una propiedad adicional en la respuesta que indicará el total gastado por cada usuario en la consulta.
+    Este cálculo debe incluir todos los productos comprados por cada usuario, sumando los precios de cada producto. Se adjuntará una propiedad adicional en la respuesta que indicará el total gastado por cada usuario en la consulta. El cálculo debe basarse en los productos filtrados.
+
+- **Ejemplo de la respuesta**:  
+    Este es un ejemplo ilustrativo de cómo debe ser la respuesta del programa para este apartado:
+
+   {
+  "results": [
+    {
+      "id": 1,
+      "userName": "Juan",
+      "name": "Mesa",
+      "price": 400,
+      "priceCategory": "Cheap"
+    },
+    {
+      "id": 2,
+      "userName": "Juan",
+      "name": "Silla",
+      "price": 500,
+      "priceCategory": "Moderate"
+    },
+    {
+      "id": 3,
+      "userName": "Luis",
+      "name": "Mueble",
+      "price": 1200,
+      "priceCategory": "Expensive"
+    }
+  ],
+  "totalPayment": {
+    "Juan": 900,
+    "Luis": 1200
+  }
+}
+    
